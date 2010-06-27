@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'rake'
+require 'bundler'
 
 begin
   require 'jeweler'
@@ -10,6 +11,7 @@ begin
     gem.email = "marcin.ciunelis@gmail.com"
     gem.homepage = "http://github.com/martinciu/state_machine-mongoid"
     gem.authors = ["Marcin Ciunelis"]
+    gem.add_bundler_dependencies
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
