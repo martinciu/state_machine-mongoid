@@ -1,6 +1,10 @@
 = state_machine-mongoid
 
-Description goes here.
+The mongoid integration for  pluginaweek's state_machine
+
+== TODO
+
+* tests!
 
 == Note on Patches/Pull Requests
  
