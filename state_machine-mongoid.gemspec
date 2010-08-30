@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marcin Ciunelis"]
-  s.date = %q{2010-06-27}
+  s.date = %q{2010-08-30}
   s.description = %q{a little lack of tests but it works!}
   s.email = %q{marcin.ciunelis@gmail.com}
   s.extra_rdoc_files = [
@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
     ".document",
      ".gitignore",
      "Gemfile",
+     "Gemfile.lock",
      "LICENSE",
      "README.rdoc",
      "Rakefile",
@@ -35,7 +36,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/martinciu/state_machine-mongoid}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
+  s.rubygems_version = %q{1.3.6}
   s.summary = %q{state_machine mongoid integration}
   s.test_files = [
     "spec/spec_helper.rb",
@@ -47,24 +48,24 @@ Gem::Specification.new do |s|
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<bson_ext>, ["= 1.0.1"])
-      s.add_runtime_dependency(%q<mongoid>, [">= 2.0.0.beta7"])
+    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<bson_ext>, ["= 1.0.4"])
+      s.add_runtime_dependency(%q<mongoid>, [">= 2.0.0.beta16"])
       s.add_runtime_dependency(%q<state_machine>, [">= 0.9.2"])
-      s.add_runtime_dependency(%q<activemodel>, [">= 3.0.0.beta4"])
+      s.add_runtime_dependency(%q<activemodel>, [">= 3.0.0"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
     else
-      s.add_dependency(%q<bson_ext>, ["= 1.0.1"])
-      s.add_dependency(%q<mongoid>, [">= 2.0.0.beta7"])
+      s.add_dependency(%q<bson_ext>, ["= 1.0.4"])
+      s.add_dependency(%q<mongoid>, [">= 2.0.0.beta16"])
       s.add_dependency(%q<state_machine>, [">= 0.9.2"])
-      s.add_dependency(%q<activemodel>, [">= 3.0.0.beta4"])
+      s.add_dependency(%q<activemodel>, [">= 3.0.0"])
       s.add_dependency(%q<rspec>, [">= 0"])
     end
   else
-    s.add_dependency(%q<bson_ext>, ["= 1.0.1"])
-    s.add_dependency(%q<mongoid>, [">= 2.0.0.beta7"])
+    s.add_dependency(%q<bson_ext>, ["= 1.0.4"])
+    s.add_dependency(%q<mongoid>, [">= 2.0.0.beta16"])
     s.add_dependency(%q<state_machine>, [">= 0.9.2"])
-    s.add_dependency(%q<activemodel>, [">= 3.0.0.beta4"])
+    s.add_dependency(%q<activemodel>, [">= 3.0.0"])
     s.add_dependency(%q<rspec>, [">= 0"])
   end
 end
