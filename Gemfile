@@ -5,5 +5,5 @@ gem "state_machine", ">=0.9.2"
 gem "activemodel", ">=3.0.0", :require => "active_model"
 
 group :development do
-  gem "rspec"
+  gem "rspec", ">= 2.0.0"
 end

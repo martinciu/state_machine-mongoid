@@ -16,10 +16,7 @@ require 'mongoid'
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'state_machine-mongoid'
-require 'spec'
-require 'spec/autorun'
+require 'rspec'
+require 'rspec/autorun'
 require 'vehicle'
 
-Spec::Runner.configure do |config|
-  
-end
