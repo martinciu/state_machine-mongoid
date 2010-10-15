@@ -8,29 +8,40 @@ describe "StateMachineMongoid integration" do
       config.allow_dynamic_fields = false
       config.master = Mongo::Connection.new.db(name)
     end
+    Mongoid.master.collections.select{ |c| c.name !~ /system\./ }.each { |c| c.drop }
   end
-  
+
   context "new vehicle" do
     before(:each) do
       @vehicle = Vehicle.new
     end
-    
+
     it "should be parked" do
       @vehicle.parked?.should be_true
       @vehicle.state.should == "parked"
     end
-    
+
     context "after igniting" do
       before(:each) do
         @vehicle.ignite
       end
-      
+
       it "should be ignited" do
         @vehicle.idling?.should be_true
       end
     end
-    
-    
   end
 
+  context "read from database" do
+    before(:each) do
+      @vehicle = Vehicle.find(Vehicle.create.id)
+    end
+    it "should has sate" do
+      @vehicle.state.should_not nil
+    end
+    it "should state transition" do
+      @vehicle.ignite
+      @vehicle.idling?.should be_true
+    end
+  end
 end

@@ -18,9 +18,7 @@ module StateMachine
         # initial state of the machine *before* any attributes are set on the
         # object
         def define_state_initializer
-
         end
-
     end
   end
 end

@@ -76,7 +76,7 @@ class Vehicle
     state :off, :value => 0
   end
 
-  def initialize
+  def initialize(*args)
     @seatbelt_on = false
     @time_used = 0
     super() # NOTE: This *must* be called, otherwise states won't get initialized

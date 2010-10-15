@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
      "VERSION",
      "lib/state_machine-mongoid.rb",
      "lib/state_machine/integrations/mongoid.rb",
-     "spec/spec.opts",
+     ".rspec",
      "spec/spec_helper.rb",
      "spec/state_machine-mongoid_spec.rb",
      "spec/vehicle.rb",
