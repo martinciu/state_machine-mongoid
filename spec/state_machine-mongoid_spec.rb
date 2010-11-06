@@ -13,35 +13,34 @@ describe "StateMachineMongoid integration" do
 
   context "new vehicle" do
     before(:each) do
-      @vehicle = Vehicle.new
+      @vehicle = Vehicle.create!
     end
 
     it "should be parked" do
-      @vehicle.parked?.should be_true
+      @vehicle.should be_parked
       @vehicle.state.should == "parked"
     end
 
     context "after igniting" do
-      before(:each) do
-        @vehicle.ignite
-      end
 
       it "should be ignited" do
-        @vehicle.idling?.should be_true
+        @vehicle.ignite!
+        @vehicle.should be_idling
       end
     end
   end
 
   context "read from database" do
     before(:each) do
-      @vehicle = Vehicle.find(Vehicle.create.id)
+      vehicle = Vehicle.create!
+      @vehicle = Vehicle.find(vehicle.id)
     end
     it "should has sate" do
-      @vehicle.state.should_not nil
+      @vehicle.state.should_not be_nil
     end
     it "should state transition" do
       @vehicle.ignite
-      @vehicle.idling?.should be_true
+      @vehicle.should be_idling
     end
   end
 end
