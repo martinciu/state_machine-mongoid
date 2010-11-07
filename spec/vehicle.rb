@@ -2,7 +2,7 @@ class Vehicle
   include Mongoid::Document
 
   field :state, :type => String, :default => "parked"
-  field :alarm_state, :type => String, :default => "active"
+  field :alarm_state, :type => Integer, :default => 1
 
   state_machine :state, :initial => :parked do
     before_transition :parked => any - :parked, :do => :put_on_seatbelt
