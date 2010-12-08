@@ -13,34 +13,49 @@ describe "StateMachineMongoid integration" do
 
   context "new vehicle" do
     before(:each) do
-      @vehicle = Vehicle.create!
+      @vehicle = Vehicle.new
     end
 
     it "should be parked" do
-      @vehicle.should be_parked
+      @vehicle.parked?.should be_true
       @vehicle.state.should == "parked"
     end
 
     context "after igniting" do
+      before(:each) do
+        @vehicle.ignite
+      end
 
       it "should be ignited" do
-        @vehicle.ignite!
-        @vehicle.should be_idling
+        @vehicle.state.should == "idling"
+        @vehicle.idling?.should be_true
       end
+      
+      it "should add error messages when transition is invalid" do
+        @vehicle.ignite.should be_false
+        @vehicle.errors.should_not be_empty
+      end
+      
     end
   end
 
   context "read from database" do
     before(:each) do
-      vehicle = Vehicle.create!
-      @vehicle = Vehicle.find(vehicle.id)
+      @vehicle = Vehicle.find(Vehicle.create.id)
     end
     it "should has sate" do
-      @vehicle.state.should_not be_nil
+      @vehicle.state.should_not nil
     end
     it "should state transition" do
       @vehicle.ignite
-      @vehicle.should be_idling
+      @vehicle.idling?.should be_true
     end
+    
+    it "should add error messages when transition is invalid" do
+      @vehicle.ignite.should be_true
+      @vehicle.ignite.should be_false
+      @vehicle.errors.should_not be_empty
+    end
+    
   end
 end
