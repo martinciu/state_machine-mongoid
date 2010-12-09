@@ -36,6 +36,11 @@ describe "StateMachineMongoid integration" do
         @vehicle.errors.should_not be_empty
       end
       
+      it "should not allow to set incorrect state" do
+        @vehicle.state = "flying"
+        @vehicle.valid?.should be_false
+      end
+      
     end
   end
 
@@ -55,7 +60,7 @@ describe "StateMachineMongoid integration" do
       @vehicle.ignite.should be_true
       @vehicle.ignite.should be_false
       @vehicle.errors.should_not be_empty
-    end
+   end
     
   end
 end
